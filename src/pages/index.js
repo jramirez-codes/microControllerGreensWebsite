@@ -2,7 +2,7 @@ import * as React from "react"
 import {Tabs, Row, Col} from "antd"
 import Status from "../components/status.js"
 import Analytics  from "../components/analytics.js"
-import Settings from "../components/settings.js"
+import LightSettings from "../components/lightSettings.js"
 
 const { TabPane } = Tabs;
 
@@ -19,7 +19,7 @@ class index extends React.Component {
               <Analytics></Analytics>
             </TabPane>
             <TabPane tab="Configure Settings" key="3">
-              <Settings></Settings> 
+              <LightSettings></LightSettings> 
             </TabPane>
           </Tabs>
         </Col>

@@ -15,7 +15,7 @@ function onChange(time, timeString) {
 
 }
 
-class Settings extends React.Component {
+class LightSettings extends React.Component {
   render() {
     return (
       <Row align="top" justify="center">
@@ -34,4 +34,4 @@ class Settings extends React.Component {
   }
 }
 
-export default Settings
+export default LightSettings
