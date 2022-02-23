@@ -1,13 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `MicroController Greens`,
+    description: `Website for MCG`,
+    author: `Jordan Ramirez`,
+    siteUrl: `https://microcontrollergreens.live/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `react-chartjs-2`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -31,8 +32,34 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        javascriptEnabled: true,
+      },
+    },
+    {
+      resolve: 'gatsby-source-mysql',
+      options: {
+        connectionDetails: {
+          host: 'localhost',
+          user: 'jordanra_admin',
+          password: 'microGreens123',
+          database: 'jordanra_microControllerGreens'
+        },
+        queries: [
+          {
+            statement: 'SELECT * FROM ESPdata ORDER BY readingTime DESC LIMIT 0,1',
+            idFieldName: 'status_id',
+            name: 'status'
+          },
+          {
+            statement: 'SELECT * FROM ESPdata',
+            idFieldName: 'status_id',
+            name: 'status'
+          },
+        ]
+      }
+    },
   ],
 }
