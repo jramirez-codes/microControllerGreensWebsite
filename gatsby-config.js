@@ -38,28 +38,28 @@ module.exports = {
         javascriptEnabled: true,
       },
     },
-    {
-      resolve: 'gatsby-source-mysql',
-      options: {
-        connectionDetails: {
-          host: 'localhost',
-          user: 'jordanra_admin',
-          password: 'microGreens123',
-          database: 'jordanra_microControllerGreens'
-        },
-        queries: [
-          {
-            statement: 'SELECT * FROM ESPdata ORDER BY readingTime DESC LIMIT 0,1',
-            idFieldName: 'status_id',
-            name: 'status'
-          },
-          {
-            statement: 'SELECT * FROM ESPdata',
-            idFieldName: 'status_id',
-            name: 'status'
-          },
-        ]
-      }
-    },
+    // {
+    //   resolve: 'gatsby-source-mysql',
+    //   options: {
+    //     connectionDetails: {
+    //       host: 'localhost',
+    //       user: 'jordanra_admin',
+    //       password: 'microGreens123',
+    //       database: 'jordanra_microControllerGreens'
+    //     },
+    //     queries: [
+    //       {
+    //         statement: 'SELECT * FROM ESPdata ORDER BY readingTime DESC LIMIT 0,1',
+    //         idFieldName: 'status_id',
+    //         name: 'status'
+    //       },
+    //       {
+    //         statement: 'SELECT * FROM ESPdata',
+    //         idFieldName: 'status_id',
+    //         name: 'status'
+    //       },
+    //     ]
+    //   }
+    // },
   ],
 }

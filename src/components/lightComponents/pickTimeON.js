@@ -1,8 +1,9 @@
-import * as React from "react"
-import {TimePicker } from "antd"
+// import * as React from "react"
+// import {TimePicker } from "antd"
 
-const PickTimeON = ({lightTime}) => (
-    <TimePicker ></TimePicker>
-)
+// const PickTimeON = ({lightTime}) => (
+//     <TimePicker ></TimePicker>
+// )
 
-export default PickTimeON
+// export default PickTimeON
+// // 
