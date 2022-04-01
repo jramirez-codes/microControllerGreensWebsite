@@ -18,7 +18,7 @@
     $lightOn = $lightOff = $humidity = "";
     // Get / Insert Data
     if ($_POST["api_key"] == "tPmAT5Ab3j7F9") {
-        $lightOn = test_input($_POST["lightOn"]);
+        $lightOff = test_input($_POST["lightOff"]);
     }
 
 
@@ -27,7 +27,7 @@
 
     if ($result = $conn->query($query)) {
         while ($row = $result->fetch_assoc()) {
-            $lightOff = $row["lightOff"];
+            $lightOn = $row["lightOn"];
             $humidity = $row["humidity"];
         }
 
@@ -36,7 +36,7 @@
     }
 
     // Clear Last Input and Insert Data
-    if($lightOn != "") {
+    if($lightOff != "") {
         // Clear Data
         $deleteRow = "DELETE FROM ESPsettings";
         $conn->query($deleteRow);

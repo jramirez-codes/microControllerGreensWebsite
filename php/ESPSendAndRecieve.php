@@ -27,28 +27,20 @@
     if($moisture != 0) {
         $sql = "INSERT INTO ESPdata (breakBeam, moisture, light)
         VALUES ('$breakBeam', '$moisture', '$light')";
-    }
-    // Test If data was saved
-    if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    } 
 
     // Printing Data
-    $query = "SELECT * FROM ESPdata";
-    echo "<b> <center>Database Output</center> </b> <br> <br>";
+    $query = "SELECT * FROM ESPsettings ORDER BY lightOn LIMIT 1";
 
     if ($result = $conn->query($query)) {
         while ($row = $result->fetch_assoc()) {
-            $field1name = $row["breakBeam"];
-            $field2name = $row["moisture"];
-            $field3name = $row["light"];
-            $field4name = $row["readingTime"];
-            echo '<b>'.$field1name.$field2name.$field3name.$field4name.'</b><br />';
+            $field->lightOn = $row["lightOn"];
+            $field->lightOff = $row["lightOff"];
+            $field->humidity = $row["humidity"];
+            
+            $output = json_encode($field);
+            echo $output;
         }
-
-        /*freeresultset*/
         $result->free();
     }
 
@@ -61,6 +53,3 @@
 
     $conn->close();
     ?>
-    </table>
-    </body>
-    </html>

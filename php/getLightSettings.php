@@ -15,7 +15,7 @@
     }
     
     // Printing Data
-    $query = "SELECT * FROM lightSettings ORDER BY lightOn LIMIT 1";
+    $query = "SELECT * FROM ESPsettings ORDER BY lightOn LIMIT 1";
 
     if ($result = $conn->query($query)) {
         while ($row = $result->fetch_assoc()) {

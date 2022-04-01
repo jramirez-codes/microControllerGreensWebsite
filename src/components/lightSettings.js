@@ -1,25 +1,32 @@
 import React from "react"
 import { Card, Row, Col, TimePicker } from "antd"
 
-// post = function(url, data) {
-//   return fetch(url, {method: "POST", headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: data});
-// }
-
-function post(url, data, length) {
-  return fetch(url, {method: "POST", headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Content-Length' : length}, data});
+function post(url, info) {
+  return fetch(url, {method: "POST", headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: info})
 }
 
 function onChangeON(time, timeString) {
   console.log("Time " + Date(time))
   console.log("Time String " + timeString)
-  var lightOn = "key=123&lightOn="+timeString;
-  post("https://microcontrollergreens.live/updateLightON.php", lightOn, lightOn.length);
+  var lightOn = "api_key=tPmAT5Ab3j7F9&lightOn="+timeString;
+  // switchLightsOn = timeString;
+
+  post("https://microcontrollergreens.live/updateLightON.php", lightOn);
+}
+
+function onChangeOFF(time, timeString) {
+  console.log("Time " + Date(time))
+  console.log("Time String " + timeString)
+  var lightOff = "api_key=tPmAT5Ab3j7F9&lightOff="+timeString;
+  // switchLightsOn = timeString;
+
+  post("https://microcontrollergreens.live/updateLightOFF.php", lightOff);
 }
 
 class LightSettings extends React.Component {
   state = {
-    lightOn: "00:00",
-    lightOff: "00:00",
+    lightOnStatus: "00:00",
+    lightOffStatus: "00:00",
   }
   
   componentDidMount() {
@@ -27,26 +34,25 @@ class LightSettings extends React.Component {
       .then(respose => {
         console.log(respose)
         return respose.json()
-        // return JSON.parse(respose);
       })
       .then(json => {
-        // console.log(date)
         console.log(json);
         this.setState({
-          lightOn: json.lightOn,
-          lightOff: json.lightOff
+          lightOnStatus: json.lightOn,
+          lightOffStatus: json.lightOff
         })
       })
   }
+
   
   render() {
-    const {lightOn, lightOff} = this.state
+    const {lightOnStatus, lightOffStatus} = this.state;
     return (
       <Row align="top" justify="center">
         <Col>
           <Card title="Light Settings">
             <h5>Configure Lights Turn On</h5>
-            <p>Lights currently turn on at: {lightOn}</p>
+            <p>Lights currently turn on at: {lightOnStatus}</p>
             <Row gutter={[16,16]}>
               <Col>
                 <p>Update light turn on: </p>
@@ -58,13 +64,13 @@ class LightSettings extends React.Component {
             <br/>
             <br/>
             <h5>Configure Light Turn Off</h5>
-            <p>Lights currently turn off at: {lightOff}</p>
+            <p>Lights currently turn off at: {lightOffStatus}</p>
             <Row gutter={[16,16]}>
               <Col>
                 <p>Update light turn on: </p>
               </Col>
               <Col>
-                <TimePicker ></TimePicker>
+                <TimePicker format="HH:mm" onChange={onChangeOFF}></TimePicker>
               </Col>
             </Row>
           </Card>
