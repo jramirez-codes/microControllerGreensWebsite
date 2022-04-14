@@ -3,7 +3,8 @@ import LoginForm from "../components/LoginForm.js"
 import { Card, Row, Col, Tabs } from "antd"
 import Status from "../components/status.js"
 import Analytics from "../components/analytics.js"
-import LightSettings from "../components/lightSettings.js"
+import LightSettingsV2 from "../components/lightSettingsV2.js"
+import HumiditySettings from "../components/humiditySettings.js"
 
 function Index () {
   // This is used for Tabs
@@ -62,7 +63,10 @@ function Index () {
                 <Analytics></Analytics>
               </TabPane>
               <TabPane tab="Configure Settings" key="3">
-                <LightSettings></LightSettings> 
+                <Row gutter={[20,20]}> 
+                  <Col span={100}><HumiditySettings></HumiditySettings></Col>
+                  <Col span={100}><LightSettingsV2></LightSettingsV2> </Col>
+                </Row>
               </TabPane>
             </Tabs>
           </Col>

@@ -11,7 +11,7 @@ class MainTab extends React.Component {
     return (
       <Row align="top" justify="center">
         <Col>
-          <Tabs defaultActiveKey="1">
+          <Tabs defaultActiveKey="1" size="large">
             <TabPane tab="Statsus" key="1">
               <Status></Status>
             </TabPane>
