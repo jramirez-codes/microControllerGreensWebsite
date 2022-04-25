@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "microcontrollergreens",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "User interface for microcontroller greens",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jordan Ramirez",
   "dependencies": {
     "@pittica/gatsby-plugin-canvas-animations": "^2.1.0",
     "antd": "^4.18.6",
