@@ -4,7 +4,7 @@ import { Line } from 'react-chartjs-2'
 
 Chart.register(...registerables);
 
-class DataGraph extends React.Component {
+class AllData extends React.Component {
   state = {
     readingTime: 0,
     light: 0,
@@ -69,4 +69,4 @@ class DataGraph extends React.Component {
   }
 }
 
-export default DataGraph
+export default AllData

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
+import "../style/styles.less"
 
 function LoginForm({Login}) {
 // const [info, setInfo] = useState({username: "", password: ""})
@@ -72,7 +73,7 @@ function LoginForm({Login}) {
           span: 16,
         }}
       >
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" classname={'main'}  htmlType="submit">
           Submit
         </Button>
       </Form.Item>

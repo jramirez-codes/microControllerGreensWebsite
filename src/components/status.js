@@ -39,7 +39,7 @@ class Status extends React.Component {
     const {breakBeam, light, moisture, readingTime} = this.state
 
     return (
-      <Row align="top" justify="center">
+      <Row align="middle" justify="center">
         <Col>
           <Card title="Microcontroller Greens Current Status">
             <p>Data last received: {readingTime}</p>

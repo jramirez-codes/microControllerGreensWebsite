@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-less`,
     `react-chartjs-2`,
     {
       resolve: `gatsby-source-filesystem`,

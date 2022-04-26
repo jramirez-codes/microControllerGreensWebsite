@@ -1,15 +1,15 @@
 import React, { useState } from "react"
+import { Card, Row, Col, Space, Layout} from "antd"
+import "../style/styles.less"
 import LoginForm from "../components/LoginForm.js"
-import { Card, Row, Col, Tabs } from "antd"
 import Status from "../components/status.js"
 import Analytics from "../components/analytics.js"
 import LightSettingsV2 from "../components/lightSettingsV2.js"
 import HumiditySettings from "../components/humiditySettings.js"
 
 function Index () {
-  // This is used for Tabs
-  const { TabPane } = Tabs;
-
+  // Layout
+  const { Header, Content} = Layout;
   // Admin login Info
   // Note: Upgrade security later
   const adminUser = {
@@ -44,6 +44,7 @@ function Index () {
       (
         <Row align="middle" justify="center">
           <Col>
+            <h2><b>MicroController Greens Web App</b></h2>
             <Card title="Login MicroController Greens">
               <LoginForm Login={Login}></LoginForm>
               {attempted === 1 ? (<p>Incorrect login information, please try again</p>):(<p></p>)}
@@ -53,24 +54,35 @@ function Index () {
       ) 
       : 
       (
-        <Row align="top" justify="center">
-          <Col>
-            <Tabs defaultActiveKey="1">
-              <TabPane tab="Statsus" key="1">
-                <Status></Status>
-              </TabPane>
-              <TabPane tab="Analytics" key="2">
-                <Analytics></Analytics>
-              </TabPane>
-              <TabPane tab="Configure Settings" key="3">
-                <Row gutter={[20,20]}> 
-                  <Col span={100}><HumiditySettings></HumiditySettings></Col>
-                  <Col span={100}><LightSettingsV2></LightSettingsV2> </Col>
-                </Row>
-              </TabPane>
-            </Tabs>
-          </Col>
-        </Row>
+        <Layout>
+          <Header>
+            <h2><b>MicroController Greens Web App</b></h2>
+          </Header>
+          <Content>
+            <Row align="middle" justify="center">
+              <Col>
+                <Space direction="vertical" size="large" align="center">
+                  <Row gutter={[20,20]} justify="center">
+                    <Col>
+                      <HumiditySettings></HumiditySettings>
+                    </Col>
+                    <Col>
+                      <LightSettingsV2></LightSettingsV2>
+                    </Col>
+                  </Row>
+                  <Row gutter={[20,20]} justify="center">
+                    <Col>
+                      <Status></Status>
+                    </Col>
+                    <Col>
+                      <Analytics></Analytics>
+                    </Col>
+                  </Row>
+                </Space>
+              </Col>
+            </Row>
+          </Content>
+        </Layout>
       )
     );
 }
