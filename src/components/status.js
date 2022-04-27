@@ -33,8 +33,8 @@ class Status extends React.Component {
         this.setState({
           breakBeam: string,
           readingTime: json.readingTime,
-          light: lightItem,
-          moisture: parseInt(json.moisture)/40
+          light: lightItem.toFixed(2),
+          moisture: (parseInt(json.moisture)/40).toFixed(2)
         })
       })
   } 

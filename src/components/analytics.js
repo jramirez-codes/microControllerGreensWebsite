@@ -30,7 +30,7 @@ class Analytics extends React.Component {
                   <LightData></LightData>
                 </div>
               </TabPane>
-              <TabPane tab="LED Intensity Lux Data" key="4">
+              <TabPane tab="Light Sensor Data" key="4">
                 <div className="chart-container">
                   <LightLuxData></LightLuxData>
                 </div>
