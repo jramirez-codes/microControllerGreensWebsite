@@ -23,7 +23,7 @@ function HumiditySettings () {
       setHumidityType("Medium Dry");
     }
     else if(value === 2) {
-      setHumidityType("Midium");
+      setHumidityType("Medium");
     }
     else if(value === 3) {
       setHumidityType("Medium Wet");
@@ -51,7 +51,7 @@ function HumiditySettings () {
           setHumidityType("Medium Dry");
         }
         else if(HumidityVal === 2) {
-          setHumidityType("Midium");
+          setHumidityType("Medium");
         }
         else if(HumidityVal === 3) {
           setHumidityType("Medium Wet");

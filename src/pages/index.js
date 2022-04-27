@@ -81,18 +81,18 @@ function Index () {
                 <Space direction="vertical" size="large" align="center">
                   <Row gutter={[20,20]} justify="center">
                     <Col>
+                      <Analytics></Analytics>
+                    </Col>
+                  </Row>
+                  <Row gutter={[20,20]} justify="center">
+                    <Col>
                       <HumiditySettings></HumiditySettings>
                     </Col>
                     <Col>
                       <LightSettingsV2></LightSettingsV2>
                     </Col>
-                  </Row>
-                  <Row gutter={[20,20]} justify="center">
                     <Col>
                       <Status></Status>
-                    </Col>
-                    <Col>
-                      <Analytics></Analytics>
                     </Col>
                   </Row>
                 </Space>

@@ -23,7 +23,7 @@ function LightSettingsV2 () {
       setLightType("Medium Dark");
     }
     else if(value === 2) {
-      setLightType("Midium");
+      setLightType("Medium");
     }
     else if(value === 3) {
       setLightType("Medium Light");
@@ -51,7 +51,7 @@ function LightSettingsV2 () {
           setLightType("Medium Dark");
         }
         else if(lightVal === 2) {
-          setLightType("Midium");
+          setLightType("Medium");
         }
         else if(lightVal === 3) {
           setLightType("Medium Light");

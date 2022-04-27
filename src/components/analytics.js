@@ -14,13 +14,19 @@ class Analytics extends React.Component {
           <Card title="Microcontroller Greens Current Analytics">
             <Tabs type="card">
               <TabPane tab="All Data" key="1">
-                <AllData></AllData>
+                <div className="chart-container">
+                  <AllData></AllData>
+                </div>
               </TabPane>
               <TabPane tab="Humidity Data" key="2">
-                <HumidityData></HumidityData>
+                <div className="chart-container">
+                  <HumidityData></HumidityData>
+                </div>
               </TabPane>
               <TabPane tab="Light Data" key="3">
-                <LightData></LightData>
+                <div className="chart-container">
+                  <LightData></LightData>
+                </div>
               </TabPane>
             </Tabs>
           </Card>
