@@ -4,6 +4,7 @@ import AllData from "../components/stats/allData.js"
 import HumidityData from "./stats/humidityData.js"
 import LightData from "./stats/lightData.js"
 import BreakBeamData from "./stats/breakBeamData.js"
+import LightLuxData from "./stats/lightLuxData.js"
 
 const { TabPane } = Tabs;
 
@@ -19,17 +20,22 @@ class Analytics extends React.Component {
                   <AllData></AllData>
                 </div>
               </TabPane>
-              <TabPane tab="Humidity Data" key="2">
+              <TabPane tab="Humidity Percent Data " key="2">
                 <div className="chart-container">
                   <HumidityData></HumidityData>
                 </div>
               </TabPane>
-              <TabPane tab="Light Data" key="3">
+              <TabPane tab="Light Percent Data" key="3">
                 <div className="chart-container">
                   <LightData></LightData>
                 </div>
               </TabPane>
-              <TabPane tab="Break Beam Data" key="4">
+              <TabPane tab="Light Lux Data" key="4">
+                <div className="chart-container">
+                  <LightLuxData></LightLuxData>
+                </div>
+              </TabPane>
+              <TabPane tab="Break Beam Data" key="5">
                 <div className="chart-container">
                   <BreakBeamData></BreakBeamData>
                 </div>

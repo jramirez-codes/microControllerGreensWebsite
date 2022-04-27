@@ -37,29 +37,29 @@ class AllData extends React.Component {
     var moistureFixed = []
     var date = []
     var breakBeamFixed = []
-    for(var i = 0; i < light.length; i++) {
-      var lightItem = Math.log(parseInt(light[i])) / 0.05301029996
+    for(var i = light.length - 1; i >= 0; i--) {
+      var lightItem = Math.log(parseInt(light[i]), 10) / 0.07
       if(lightItem > 100) {
         lightFixed.push(100)
       }
       else {
         lightFixed.push(lightItem)
       }
-        moistureFixed.push(parseInt(moisture[i])/40)
-        date.push(Date(readingTime[i]))
-        if(parseInt(breakBeam[i]) === 1) {
-          breakBeamFixed.push(100)
-        }
-        else {
-          breakBeamFixed.push(0)
-        }
+      moistureFixed.push(parseInt(moisture[i], 10)/40)
+      date.push(readingTime[i])
+      if(parseInt(breakBeam[i]) === 1) {
+        breakBeamFixed.push(100)
+      }
+      else {
+        breakBeamFixed.push(0)
+      }
     }
     console.log(lightFixed)
     console.log(moistureFixed)
     console.log(date)
 
     const data = {
-        labels: readingTime,
+        labels: date,
         datasets: [{
           label: 'Moisture Percent',
           data: moistureFixed,

@@ -4,10 +4,10 @@ import { Line } from 'react-chartjs-2'
 
 Chart.register(...registerables);
 
-class BreakBeamData extends React.Component {
+class LightLuxData extends React.Component {
   state = {
-    breakBeam: 0,
     readingTime: 0,
+    light: 0,
   }
 
   componentDidMount() {
@@ -22,34 +22,30 @@ class BreakBeamData extends React.Component {
         // console.log(json.readingTime[0]);
         this.setState({
           readingTime: json.readingTime,
-          breakBeam: json.breakBeam,
+          light: json.light,
         })
       })
   }
 
   render() {
-    const {readingTime, breakBeam} = this.state
-    var breakBeamFixed = []
+    const {light, readingTime} = this.state
+    var lightFixed = []
     var date = []
     for(var i = readingTime.length - 1; i >= 0; i--) {
-        if(parseInt(breakBeam[i]) === 1) {
-          breakBeamFixed.push(100)
-        }
-        else {
-          breakBeamFixed.push(0)
-        }
-      date.push(readingTime[i]);
+      lightFixed.push(parseInt(light[i]))
+      date.push(readingTime[i])
     }
+
     const data = {
         labels: date,
         datasets: [
         {
-          label: 'Break Beam Percent',
-          data: breakBeamFixed,
+          label: 'Light LUX',
+          data: lightFixed,
           fill: false,
-          borderColor: 'rgb(53,255,51)',
+          borderColor: 'rgb(226,135,67)',
           tension: 0.1
-        }
+        },
         ]
         
       };
@@ -60,4 +56,4 @@ class BreakBeamData extends React.Component {
   }
 }
 
-export default BreakBeamData
+export default LightLuxData

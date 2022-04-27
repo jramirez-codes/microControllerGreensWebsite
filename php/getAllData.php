@@ -15,7 +15,7 @@
     }
 
     // Printing Data
-    $query = "SELECT * FROM ESPdata ORDER BY readingTime LIMIT 200";
+    $query = "SELECT * FROM ESPdata ORDER BY readingTime DESC LIMIT 200";
     // echo json_encode($field);
     $field->breakBeam = array();
     $field->moisture = array();

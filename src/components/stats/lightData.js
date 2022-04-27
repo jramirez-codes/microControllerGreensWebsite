@@ -31,19 +31,19 @@ class LightData extends React.Component {
     const {light, readingTime} = this.state
     var lightFixed = []
     var date = []
-    for(var i = 0; i < light.length; i++) {
-      var lightItem = Math.log(parseInt(light[i])) / 0.05301029996
-      if(lightItem > 100) {
+    for(var i = readingTime.length - 1; i >= 0; i--) {
+      var lightItem = (Math.log(parseInt(light[i])) / 0.07)
+      if(lightItem === 100) {
         lightFixed.push(100)
       }
       else {
         lightFixed.push(lightItem)
       }
-      date.push(Date(readingTime[i]))
+      date.push(readingTime[i])
     }
 
     const data = {
-        labels: readingTime,
+        labels: date,
         datasets: [
         {
           label: 'Light Percent',
