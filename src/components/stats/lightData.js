@@ -46,7 +46,7 @@ class LightData extends React.Component {
         labels: date,
         datasets: [
         {
-          label: 'Light Percent',
+          label: 'LED Intensity Percent',
           data: lightFixed,
           fill: false,
           borderColor: 'rgb(226,135,67)',

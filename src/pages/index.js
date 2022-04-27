@@ -45,7 +45,7 @@ function Index () {
   const CreateUserLogin = userInfo => {
     var data = "api_key=tPmAT5Ab3j7F9&username="+userInfo.username+"&password="+userInfo.password;
     post("https://microcontrollergreens.live/updateUsers.php", data);
-    setAttemptCreate("User created! Please login.User created! Please login.");
+    setAttemptCreate("User created! Please login.");
   }
 
     return (

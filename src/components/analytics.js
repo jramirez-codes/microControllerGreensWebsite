@@ -25,12 +25,12 @@ class Analytics extends React.Component {
                   <HumidityData></HumidityData>
                 </div>
               </TabPane>
-              <TabPane tab="Light Percent Data" key="3">
+              <TabPane tab="LED Intensity Percent Data" key="3">
                 <div className="chart-container">
                   <LightData></LightData>
                 </div>
               </TabPane>
-              <TabPane tab="Light Lux Data" key="4">
+              <TabPane tab="LED Intensity Lux Data" key="4">
                 <div className="chart-container">
                   <LightLuxData></LightLuxData>
                 </div>
