@@ -32,7 +32,7 @@ class HumidityData extends React.Component {
     var moistureFixed = []
     var date = []
     for(var i = 0; i < readingTime.length; i++) {
-        moistureFixed.push(parseInt(moisture[i]))
+        moistureFixed.push(parseInt(moisture[i])/40)
         date.push(Date(readingTime[i]))
     }
     console.log(moistureFixed)
@@ -41,7 +41,7 @@ class HumidityData extends React.Component {
     const data = {
         labels: readingTime,
         datasets: [{
-          label: 'Moisture',
+          label: 'Moisture Percent',
           data: moistureFixed,
           fill: false,
           borderColor: 'rgb(75, 192, 192)',

@@ -3,6 +3,7 @@ import { Card, Row, Col, Tabs } from "antd"
 import AllData from "../components/stats/allData.js"
 import HumidityData from "./stats/humidityData.js"
 import LightData from "./stats/lightData.js"
+import BreakBeamData from "./stats/breakBeamData.js"
 
 const { TabPane } = Tabs;
 
@@ -26,6 +27,11 @@ class Analytics extends React.Component {
               <TabPane tab="Light Data" key="3">
                 <div className="chart-container">
                   <LightData></LightData>
+                </div>
+              </TabPane>
+              <TabPane tab="Break Beam Data" key="4">
+                <div className="chart-container">
+                  <BreakBeamData></BreakBeamData>
                 </div>
               </TabPane>
             </Tabs>

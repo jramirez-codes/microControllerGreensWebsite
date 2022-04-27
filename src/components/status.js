@@ -25,12 +25,16 @@ class Status extends React.Component {
         else {
           string = "No"
         }
+        var lightItem = Math.log(parseInt(json.light)) / 0.05301029996;
+        if(lightItem > 100) {
+          lightItem = 100
+        }
         // Date
         this.setState({
           breakBeam: string,
           readingTime: json.readingTime,
-          light: json.light,
-          moisture: json.moisture
+          light: lightItem,
+          moisture: parseInt(json.moisture)/40
         })
       })
   } 
@@ -43,8 +47,8 @@ class Status extends React.Component {
         <Col>
           <Card title="Microcontroller Greens Current Status">
             <p>Data last received: {readingTime}</p>
-            <p>Light Sensor: {light}</p>
-            <p>Moisture Sensor: {moisture}</p>
+            <p>Light Sensor: {light}%</p>
+            <p>Moisture Sensor: {moisture}%</p>
             <p>Ready to harvest: {breakBeam}</p>
           </Card>
         </Col>

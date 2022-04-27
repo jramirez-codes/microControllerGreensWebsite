@@ -9,6 +9,7 @@ class AllData extends React.Component {
     readingTime: 0,
     light: 0,
     moisture: 0,
+    breakBeam: 0,
   }
 
   componentDidMount() {
@@ -25,19 +26,33 @@ class AllData extends React.Component {
           readingTime: json.readingTime,
           light: json.light,
           moisture: json.moisture,
+          breakBeam: json.breakBeam,
         })
       })
   }
 
   render() {
-    const {light, moisture, readingTime} = this.state
+    const {light, moisture, readingTime, breakBeam} = this.state
     var lightFixed = []
     var moistureFixed = []
     var date = []
+    var breakBeamFixed = []
     for(var i = 0; i < light.length; i++) {
-        lightFixed.push(parseInt(light[i]))
-        moistureFixed.push(parseInt(moisture[i]))
+      var lightItem = Math.log(parseInt(light[i])) / 0.05301029996
+      if(lightItem > 100) {
+        lightFixed.push(100)
+      }
+      else {
+        lightFixed.push(lightItem)
+      }
+        moistureFixed.push(parseInt(moisture[i])/40)
         date.push(Date(readingTime[i]))
+        if(parseInt(breakBeam[i]) === 1) {
+          breakBeamFixed.push(100)
+        }
+        else {
+          breakBeamFixed.push(0)
+        }
     }
     console.log(lightFixed)
     console.log(moistureFixed)
@@ -46,19 +61,26 @@ class AllData extends React.Component {
     const data = {
         labels: readingTime,
         datasets: [{
-          label: 'Moisture',
+          label: 'Moisture Percent',
           data: moistureFixed,
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1
         },
         {
-          label: 'Light',
+          label: 'Light Percent',
           data: lightFixed,
           fill: false,
           borderColor: 'rgb(226,135,67)',
           tension: 0.1
         },
+        {
+          label: 'Break Beam Percent',
+          data: breakBeamFixed,
+          fill: false,
+          borderColor: 'rgb(53,255,51)',
+          tension: 0.1
+        }
         ]
         
       };

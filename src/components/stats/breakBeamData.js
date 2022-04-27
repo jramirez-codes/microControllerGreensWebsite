@@ -4,10 +4,10 @@ import { Line } from 'react-chartjs-2'
 
 Chart.register(...registerables);
 
-class LightData extends React.Component {
+class BreakBeamData extends React.Component {
   state = {
+    breakBeam: 0,
     readingTime: 0,
-    light: 0,
   }
 
   componentDidMount() {
@@ -22,36 +22,32 @@ class LightData extends React.Component {
         // console.log(json.readingTime[0]);
         this.setState({
           readingTime: json.readingTime,
-          light: json.light,
+          breakBeam: json.breakBeam,
         })
       })
   }
 
   render() {
-    const {light, readingTime} = this.state
-    var lightFixed = []
-    var date = []
-    for(var i = 0; i < light.length; i++) {
-      var lightItem = Math.log(parseInt(light[i])) / 0.05301029996
-      if(lightItem > 100) {
-        lightFixed.push(100)
-      }
-      else {
-        lightFixed.push(lightItem)
-      }
-      date.push(Date(readingTime[i]))
+    const {readingTime, breakBeam} = this.state
+    var breakBeamFixed = []
+    for(var i = 0; i < readingTime.length; i++) {
+        if(parseInt(breakBeam[i]) === 1) {
+          breakBeamFixed.push(100)
+        }
+        else {
+          breakBeamFixed.push(0)
+        }
     }
-
     const data = {
         labels: readingTime,
         datasets: [
         {
-          label: 'Light Percent',
-          data: lightFixed,
+          label: 'Break Beam Percent',
+          data: breakBeamFixed,
           fill: false,
-          borderColor: 'rgb(226,135,67)',
+          borderColor: 'rgb(53,255,51)',
           tension: 0.1
-        },
+        }
         ]
         
       };
@@ -62,4 +58,4 @@ class LightData extends React.Component {
   }
 }
 
-export default LightData
+export default BreakBeamData
