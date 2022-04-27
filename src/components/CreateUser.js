@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button} from 'antd';
 import "../style/styles.less"
 
-function LoginForm({Login}) {
-// const [info, setInfo] = useState({username: "", password: ""})
+function CreateUser({Login}) {
 
   const onFinish = (values) => {
     // console.log('Success:', values);
@@ -40,7 +39,7 @@ function LoginForm({Login}) {
           },
         ]}
       >
-        <Input />
+      <Input />
       </Form.Item>
 
       <Form.Item
@@ -55,18 +54,6 @@ function LoginForm({Login}) {
       >
         <Input.Password />
       </Form.Item>
-
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
-
       <Form.Item
         wrapperCol={{
           offset: 8,
@@ -74,11 +61,11 @@ function LoginForm({Login}) {
         }}
       >
         <Button type="primary" classname={'main'}  htmlType="submit">
-          Login
+          Create!
         </Button>
       </Form.Item>
     </Form>
   );
 };
 
-export default LoginForm;
+export default CreateUser;

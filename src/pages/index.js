@@ -1,53 +1,70 @@
 import React, { useState } from "react"
-import { Card, Row, Col, Space, Layout} from "antd"
+import { Card, Row, Col, Space, Layout, Tabs} from "antd"
 import "../style/styles.less"
 import LoginForm from "../components/LoginForm.js"
+import CreateUser from "../components/CreateUser"
 import Status from "../components/status.js"
 import Analytics from "../components/analytics.js"
 import LightSettingsV2 from "../components/lightSettingsV2.js"
 import HumiditySettings from "../components/humiditySettings.js"
 
+function post(url, info) {
+  return fetch(url, {method: "POST", headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: info})
+}
+
 function Index () {
+  // For Tabs
+  const { TabPane } = Tabs;
+
   // Layout
   const { Header, Content} = Layout;
-  // Admin login Info
-  // Note: Upgrade security later
-  const adminUser = {
-    username: "admin",
-    password: "microgreens123"
-  }
 
   // Checking for first attempt
   // State For Passwords
-  const [user, setUser] = useState({username: "", password:""});
-  const [attempted, setAttempted] = useState(0);
+  const [login, setLogin] = useState(0);
+  const [attemptedLogin, setAttemptedLogin] = useState("");
+  const [attemptCreate, setAttemptCreate] = useState("");
 
   // Checking Login
   const Login = loginInfo => {
-    if(loginInfo.username === adminUser.username && adminUser.password === loginInfo.password) {
-      console.log("Logged In");    
-
-      // Set user
-      setUser({
-        username: loginInfo.username,
-        password: loginInfo.password
-      })
-    }
-    else {
-      console.log("Didnt mathch");
-      // Set Attempted
-      setAttempted(1)
-    }
+    var data = "api_key=tPmAT5Ab3j7F9&username="+loginInfo.username+"&password="+loginInfo.password;
+    post("https://microcontrollergreens.live/updateLogin.php", data)
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      if(json.test) {
+        setLogin(1);
+      }
+      else {
+        setAttemptedLogin("Incorrect login information, please try again.");
+      }
+    })
   }
+
+  const CreateUserLogin = userInfo => {
+    var data = "api_key=tPmAT5Ab3j7F9&username="+userInfo.username+"&password="+userInfo.password;
+    post("https://microcontrollergreens.live/updateUsers.php", data);
+    setAttemptCreate("User created! Please login.User created! Please login.");
+  }
+
     return (
-      user.username === "" ? 
+      login === 0 ? 
       (
         <Row align="middle" justify="center">
           <Col>
             <h2><b>MicroController Greens Web App</b></h2>
-            <Card title="Login MicroController Greens">
-              <LoginForm Login={Login}></LoginForm>
-              {attempted === 1 ? (<p>Incorrect login information, please try again</p>):(<p></p>)}
+            <Card title="MicroController Greens Authentication">
+              <Tabs type="card">
+                <TabPane tab="User Login" key="1">
+                  <LoginForm Login={Login}></LoginForm>
+                  <p>{attemptedLogin}</p>
+                </TabPane>
+                <TabPane tab="Create User" key="2">
+                  <CreateUser Login={CreateUserLogin}></CreateUser>
+                  <p>{attemptCreate}</p>
+                </TabPane>
+              </Tabs>
             </Card>
           </Col>
         </Row>
