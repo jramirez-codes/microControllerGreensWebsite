@@ -32,7 +32,10 @@ class LightData extends React.Component {
     var lightFixed = []
     var date = []
     for(var i = readingTime.length - 1; i >= 0; i--) {
-      var lightItem = (Math.log(parseInt(light[i])) / 0.07)
+      var lightItem = 0;
+      if(parseInt(light[i]) !== 0) {
+        lightItem = Math.log(parseInt(light[i]), 10) / 0.07
+      }
       if(lightItem === 100) {
         lightFixed.push(100)
       }

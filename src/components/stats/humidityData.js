@@ -32,8 +32,8 @@ class HumidityData extends React.Component {
     var moistureFixed = []
     var date = []
     for(var i = readingTime.length - 1; i >= 0; i--) {
-        moistureFixed.push(parseInt(moisture[i])/40)
-        date.push(readingTime[i])
+      moistureFixed.push(100-((parseInt(moisture[i], 10) - 1200)/16))
+      date.push(readingTime[i])
     }
     console.log(moistureFixed)
     console.log(date)

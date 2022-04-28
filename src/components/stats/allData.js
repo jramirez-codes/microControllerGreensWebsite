@@ -38,14 +38,20 @@ class AllData extends React.Component {
     var date = []
     var breakBeamFixed = []
     for(var i = light.length - 1; i >= 0; i--) {
-      var lightItem = Math.log(parseInt(light[i]), 10) / 0.07
+      var lightItem = 0;
+      if(parseInt(light[i]) !== 0) {
+        lightItem = Math.log(parseInt(light[i]), 10) / 0.07
+      }
+
+      // If light is over 100%
       if(lightItem > 100) {
         lightFixed.push(100)
       }
       else {
         lightFixed.push(lightItem)
       }
-      moistureFixed.push(parseInt(moisture[i], 10)/40)
+
+      moistureFixed.push(100-((parseInt(moisture[i], 10) - 1200)/16))
       date.push(readingTime[i])
       if(parseInt(breakBeam[i]) === 1) {
         breakBeamFixed.push(100)

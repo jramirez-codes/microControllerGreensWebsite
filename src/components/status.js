@@ -34,7 +34,7 @@ class Status extends React.Component {
           breakBeam: string,
           readingTime: json.readingTime,
           light: lightItem.toFixed(2),
-          moisture: (parseInt(json.moisture)/40).toFixed(2)
+          moisture: (100-((parseInt(json.moisture, 10) - 1200)/16)).toFixed(2)
         })
       })
   } 
