@@ -17,6 +17,7 @@
     // Printing Data
     $query = "SELECT * FROM ESPdata ORDER BY readingTime DESC LIMIT 200";
     // echo json_encode($field);
+    $field->PWM = array();
     $field->breakBeam = array();
     $field->moisture = array();
     $field->light = array();
@@ -29,6 +30,7 @@
             array_push($field->moisture, $row["moisture"]);
             array_push($field->light, $row["light"]);
             array_push($field->readingTime, $row["readingTime"]);
+            array_push($field->PWM, $row["PWM"]);
 
             //echo '<b>'.$field1name.$field2name.$field3name.$field4name.'</b><br />';
         }

@@ -24,6 +24,7 @@
             $field->moisture = $row["moisture"];
             $field->light = $row["light"];
             $field->readingTime = $row["readingTime"];
+            $field->PWM = $row["PWM"];
             
             $output = json_encode($field);
             echo $output;

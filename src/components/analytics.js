@@ -15,7 +15,7 @@ class Analytics extends React.Component {
         <Col>
           <Card title="Microcontroller Greens Current Analytics">
             <Tabs type="card">
-              <TabPane tab="All Data" key="1">
+              <TabPane tab="Normalized Data" key="1">
                 <div className="chart-container">
                   <AllData></AllData>
                 </div>

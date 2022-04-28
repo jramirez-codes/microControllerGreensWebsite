@@ -14,9 +14,10 @@
 
     // Data Vars
     $date = "";
-    $light = $moisture = $breakBeam = 0;
+    $light = $moisture = $breakBeam = $PWM = 0;
     // Get Data
     if ($_POST["api_key"] == "tPmAT5Ab3j7F9") {
+        $PWM = test_input($_POST["PWMDutyCycle"]);
         $light = test_input($_POST["light"]);
         $moisture = test_input($_POST["moisture"]);
         $breakBeam = test_input($_POST["breakBeam"]);
@@ -25,8 +26,8 @@
 
     // Insert Data
     if($moisture != 0) {
-        $sql = "INSERT INTO ESPdata (breakBeam, moisture, light)
-        VALUES ('$breakBeam', '$moisture', '$light')";
+        $sql = "INSERT INTO ESPdata (PWM, breakBeam, moisture, light)
+        VALUES ('$PWM', $breakBeam', '$moisture', '$light')";
         $conn->query($sql);
     }
 

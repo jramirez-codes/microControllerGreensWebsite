@@ -7,6 +7,7 @@ class Status extends React.Component {
     readingTime: "",
     light: "",
     moisture: "",
+    PWM: ""
   }
 
   componentDidMount() {
@@ -25,29 +26,27 @@ class Status extends React.Component {
         else {
           string = "No"
         }
-        var lightItem = Math.log(parseInt(json.light)) / 0.07;
-        if(lightItem > 100) {
-          lightItem = 100
-        }
         // Date
         this.setState({
           breakBeam: string,
           readingTime: json.readingTime,
-          light: lightItem.toFixed(2),
-          moisture: (100-((parseInt(json.moisture, 10) - 1200)/16)).toFixed(2)
+          light: json.light,
+          moisture: (100-((parseInt(json.moisture, 10) - 1200)/16)).toFixed(2),
+          PWM: json.PWM,
         })
       })
   } 
 
   render () {
-    const {breakBeam, light, moisture, readingTime} = this.state
+    const {breakBeam, light, moisture, readingTime, PWM} = this.state
 
     return (
       <Row align="middle" justify="center">
         <Col>
           <Card title="Microcontroller Greens Current Status">
             <p>Data last received: {readingTime}</p>
-            <p>LED Intensity: {light}%</p>
+            <p>LED Intensity: {PWM}%</p>
+            <p>Light Sensor: {light} Lux</p>
             <p>Moisture Sensor: {moisture}%</p>
             <p>Ready to harvest: {breakBeam}</p>
           </Card>

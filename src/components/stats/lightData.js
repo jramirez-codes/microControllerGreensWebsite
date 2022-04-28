@@ -22,7 +22,7 @@ class LightData extends React.Component {
         // console.log(json.readingTime[0]);
         this.setState({
           readingTime: json.readingTime,
-          light: json.light,
+          light: json.PWM,
         })
       })
   }
@@ -32,16 +32,17 @@ class LightData extends React.Component {
     var lightFixed = []
     var date = []
     for(var i = readingTime.length - 1; i >= 0; i--) {
-      var lightItem = 0;
-      if(parseInt(light[i]) !== 0) {
-        lightItem = Math.log(parseInt(light[i]), 10) / 0.07
-      }
-      if(lightItem === 100) {
-        lightFixed.push(100)
-      }
-      else {
-        lightFixed.push(lightItem)
-      }
+      // var lightItem = 0;
+      // if(parseInt(light[i]) !== 0) {
+      //   lightItem = Math.log(parseInt(light[i]), 10) / 0.06
+      // }
+      // if(lightItem > 100) {
+      //   lightFixed.push(100)
+      // }
+      // else {
+      //   lightFixed.push(lightItem)
+      // }
+      lightFixed.push(light[i])
       date.push(readingTime[i])
     }
 
@@ -52,7 +53,7 @@ class LightData extends React.Component {
           label: 'LED Intensity Percent',
           data: lightFixed,
           fill: false,
-          borderColor: 'rgb(226,135,67)',
+          borderColor: 'rgb(252,3,36)',
           tension: 0.1
         },
         ]

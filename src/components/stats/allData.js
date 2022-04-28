@@ -10,6 +10,7 @@ class AllData extends React.Component {
     light: 0,
     moisture: 0,
     breakBeam: 0,
+    PWM: 0,
   }
 
   componentDidMount() {
@@ -27,20 +28,22 @@ class AllData extends React.Component {
           light: json.light,
           moisture: json.moisture,
           breakBeam: json.breakBeam,
+          PWM: json.PWM,
         })
       })
   }
 
   render() {
-    const {light, moisture, readingTime, breakBeam} = this.state
+    const {light, moisture, readingTime, breakBeam, PWM} = this.state
     var lightFixed = []
     var moistureFixed = []
     var date = []
     var breakBeamFixed = []
+    var PWMfixed = []
     for(var i = light.length - 1; i >= 0; i--) {
       var lightItem = 0;
       if(parseInt(light[i]) !== 0) {
-        lightItem = Math.log(parseInt(light[i]), 10) / 0.07
+        lightItem = Math.log(parseInt(light[i]), 10) / 0.06
       }
 
       // If light is over 100%
@@ -50,7 +53,7 @@ class AllData extends React.Component {
       else {
         lightFixed.push(lightItem)
       }
-
+      PWMfixed.push(PWM[i])
       moistureFixed.push(100-((parseInt(moisture[i], 10) - 1200)/16))
       date.push(readingTime[i])
       if(parseInt(breakBeam[i]) === 1) {
@@ -60,9 +63,6 @@ class AllData extends React.Component {
         breakBeamFixed.push(0)
       }
     }
-    console.log(lightFixed)
-    console.log(moistureFixed)
-    console.log(date)
 
     const data = {
         labels: date,
@@ -74,7 +74,7 @@ class AllData extends React.Component {
           tension: 0.1
         },
         {
-          label: 'Light Percent',
+          label: 'LUX Normalized',
           data: lightFixed,
           fill: false,
           borderColor: 'rgb(226,135,67)',
@@ -85,6 +85,13 @@ class AllData extends React.Component {
           data: breakBeamFixed,
           fill: false,
           borderColor: 'rgb(53,255,51)',
+          tension: 0.1
+        }, 
+        {
+          label: 'LED Intensity Percent',
+          data: PWMfixed,
+          fill: false,
+          borderColor: 'rgb(252,3,36)',
           tension: 0.1
         }
         ]
