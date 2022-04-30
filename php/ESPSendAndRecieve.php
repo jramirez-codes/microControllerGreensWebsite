@@ -1,4 +1,5 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
     // Data Base Vars
     $servername = "localhost";
     $dbname = "jordanra_microControllerGreens";
@@ -14,20 +15,18 @@
 
     // Data Vars
     $date = "";
-    $light = $moisture = $breakBeam = $PWM = 0;
-    // Get Data
+    $light = $moisture = $breakBeam = $PWM = 0; 
+
     if ($_POST["api_key"] == "tPmAT5Ab3j7F9") {
-        $PWM = test_input($_POST["PWMDutyCycle"]);
         $light = test_input($_POST["light"]);
         $moisture = test_input($_POST["moisture"]);
         $breakBeam = test_input($_POST["breakBeam"]);
+        $PWM = test_input($_POST["PWMDutyCycle"]);
         $date = date('Y-m-d H:i:s');
-    }
-
-    // Insert Data
-    if($moisture != 0) {
+    
+        // Insert Data
         $sql = "INSERT INTO ESPdata (PWM, breakBeam, moisture, light)
-        VALUES ('$PWM', $breakBeam', '$moisture', '$light')";
+        VALUES ('$PWM', '$breakBeam', '$moisture', '$light')";
         $conn->query($sql);
     }
 
